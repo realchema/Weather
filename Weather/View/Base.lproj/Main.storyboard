@@ -27,7 +27,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="switch"/>
                                 <connections>
-                                    <segue destination="zNo-1A-B4F" kind="show" id="9qc-ZE-Lco"/>
+                                    <segue destination="zNo-1A-B4F" kind="show" identifier="changeCityName" id="9qc-ZE-Lco"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQe-Cl-6kw" userLabel="Container View">
@@ -45,7 +45,7 @@
                                         <rect key="frame" x="37" y="136" width="300" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBa-T6-cyO" userLabel="City Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBa-T6-cyO" userLabel="cityLabel">
                                         <rect key="frame" x="21" y="375" width="141" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="33"/>
@@ -58,6 +58,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="button" destination="qAG-W2-biu" id="j9W-35-hOl"/>
+                        <outlet property="cityLabel" destination="JBa-T6-cyO" id="hCP-V7-d4i"/>
+                        <outlet property="temperatureLabel" destination="JVm-fm-eP0" id="GCf-aR-i4z"/>
+                        <outlet property="weatherIcon" destination="8c3-aR-d0W" id="Zb4-Q3-sh0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,6 +89,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="getWeatherPressed:" destination="zNo-1A-B4F" eventType="touchUpInside" id="FaU-wC-wl7"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Nd-Xx-xWZ">
                                 <rect key="frame" x="96" y="149" width="198" height="30"/>
@@ -91,11 +100,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SvI-9A-iuI">
+                                <rect key="frame" x="36" y="55" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="left"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="zNo-1A-B4F" eventType="touchUpInside" id="z7e-aM-Uva"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tre-mr-dBp"/>
                     </view>
                     <navigationItem key="navigationItem" id="ybr-0R-M4H" userLabel="Navigation Item"/>
+                    <connections>
+                        <outlet property="changeCityTextField" destination="3Nd-Xx-xWZ" id="QXU-D8-rqq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFz-8S-1t5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,6 +125,7 @@
     <resources>
         <image name="background" width="500" height="755"/>
         <image name="cityBackground" width="600" height="399.5"/>
+        <image name="left" width="32" height="32"/>
         <image name="switch" width="64" height="64"/>
     </resources>
 </document>

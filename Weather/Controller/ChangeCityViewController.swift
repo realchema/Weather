@@ -8,23 +8,39 @@
 
 import UIKit
 
+//protocol declaration:
+protocol ChangeCityDelegate {
+    func userEnteredANewCityName(city: String)
+}
+
+
 class ChangeCityViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var delegate : ChangeCityDelegate?
+    
+    //This is the pre-linked IBOutlets to the text field:
+    @IBOutlet weak var changeCityTextField: UITextField!
+    
+    
+    //This is the IBAction that gets called when the user taps on the "Get Weather" button:
+    
+    
+    @IBAction func getWeatherPressed(_ sender: AnyObject) {
+        
+        let cityName = changeCityTextField.text!
+        
+        delegate?.userEnteredANewCityName(city: cityName)
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    //This is the IBAction that gets called when the user taps the back button. It dismisses the ChangeCityViewController.
+    @IBAction func backButtonPressed(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
+    
 }
+
